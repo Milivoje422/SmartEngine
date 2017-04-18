@@ -128,7 +128,9 @@ class SiteController extends Controller
 		return $this->render('gallery');
 	}
 
-
+	public function actionHome(){
+		return $this->render('home');
+	}
 
 	public function actionNews(){
 		return $this->render('news');
