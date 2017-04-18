@@ -1,0 +1,24 @@
+{
+    "name": "inpassor/yii2-daemon",
+    "description": "The simple daemon extension for the Yii 2 framework",
+    "keywords": [
+        "yii2",
+        "daemon"
+    ],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Inpassor",
+            "email": "inpassor@yandex.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "inpassor\\daemon\\": ""
+        }
+    }
+}
