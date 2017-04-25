@@ -58,6 +58,7 @@ JqueryFiles::register($this);
 									</li>
 								</ul>
 							</li>
+							test
 							<li class="parent">
 								<span>Components</span>
 								<ul>
