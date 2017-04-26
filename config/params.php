@@ -25,7 +25,8 @@ return [
 		],
 
 	],
-    'app_name' => 'Portofolio',
+    'app_name' => 'SmartEngine',
+	'logo' => '../../AppImages/57846147-Simple-gear-cog-wheel-or-settings-logo.png',
 	'errorEmail' => 'milivojeivic422@gmail.com',
 	'userInfoEmail' => 'milivojeivic422@gmail.com',
 	'originalImageFolder' => 'protected/origimages/',
@@ -48,6 +49,7 @@ return [
 	'defaultTranslationLanguage' => 1,
 	'slash'=>'',
 	'defaultPhotoPrice'=>'20.00',
+	'founder' => 'Ivic Milivoje',
 
 
 	'agency' => [
