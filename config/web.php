@@ -13,6 +13,16 @@ $config = [
             'enableAccountDelete' => true,
             'enableUnconfirmedLogin' => true,
             'admins' => ['milivojeivic12'],
+	        'controllerMap' => [
+		        'admin' => [
+			        'class'  => 'dektrium\user\controllers\AdminController',
+			        'layout' => 'admin_layout',
+		        ],
+		        'user' => [
+			        'class' => 'dektrium\user\controllers\UserController',
+			        'layout' => 'user_layout',
+		        ],
+	        ],
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
 

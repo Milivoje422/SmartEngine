@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\ImageSearch;
+//use app\models\ImageSearch;
 //use GuzzleHttp\Psr7\UploadedFile;
 use app\models\Subscribe;
 use Yii;
@@ -13,7 +13,7 @@ use app\models\ContactForm;
 //use app\models\Category ;
 //use yii\helpers\ArrayHelper;
 use cakebake\actionlog\model\ActionLog;
-use app\models\Images;
+//use app\models\Images;
 //use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
@@ -32,7 +32,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
