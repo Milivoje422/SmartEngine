@@ -17,8 +17,6 @@ class Subscribe extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-//	public $user_ip = Yii::$app->getRequest()->getUserIP();
-
     public static function tableName()
     {
         return 'subscribe';
@@ -31,6 +29,7 @@ class Subscribe extends \yii\db\ActiveRecord
     {
         return [
             [['email'], 'required'],
+	        [['email'], 'email', 'message'=>'Email is not valid'],
             [['email'], 'unique','message' => 'You have been already subscribed, thank you again for support!'],
             [['email','user_ip'], 'string', 'max' => 255],
         ];
@@ -47,9 +46,4 @@ class Subscribe extends \yii\db\ActiveRecord
             'user_ip' => Yii::t('app', 'User Ip'),
         ];
     }
-//	public function scenarios()
-//	{
-//		// bypass scenarios() implementation in the parent class
-//		return Model::scenarios();
-//	}
 }

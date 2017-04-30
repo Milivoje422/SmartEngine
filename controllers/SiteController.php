@@ -72,26 +72,35 @@ class SiteController extends Controller
 		$model = new Subscribe();
 
 	    // Send mail to Admin;
-	    $mailfrom = new ContactForm();
+	    $adminmail = new ContactForm();
 
 	    // Send mail to Customer;
-	    $mailTo = new ContactForm();
+	    $membermail = new ContactForm();
 
 	    if ($model->load(Yii::$app->request->post())) {
 		    $model->created_at = date('Y-m-d h:m:s');
 		    $model->user_ip = \Yii::$app->getRequest()->getUserIP();
 
-//          $email = $model->email;
-//		    $mailfrom->subject = "Subscribe";
-//		    $mailfrom->email = $email;
-//		    $mailfrom->body = 'Subscriber!';
-//		    $mailfrom->name = 'Subscriber!';
+		    $email = $model->email; //Define a user mail.
+
+		    $adminmail->subject = "Subscribe";
+		    $adminmail->email = $email;
+		    $adminmail->body = 'Subscriber!';
+		    $adminmail->name = 'Subscriber!';
+
+		    $membermail->subject = "Subscribe!";
+		    $membermail->email = \Yii::$app->params['adminEmail'];
+		    $membermail->body = "Thank you for subscribe! \n";
+		    $membermail->name = "Smart Engine bot!";
 
 		    if ($model->save()) {
-//			    $mailfrom->contact(Yii::$app->params['adminEmail']);
-				    Yii::$app->session->setFlash('contactFormSubmitted');
+			    if($adminmail->contact(Yii::$app->params['adminEmail']) || $membermail->contact($email)) {
+
+				    Yii::$app->session->setFlash('subscribed','Thank you for subscribe!');
 				    ActionLog::add('success', 1);
 				    return $this->refresh();
+
+			    }
 		    }
 	    }
 	    return $this->render('index', [
@@ -100,82 +109,82 @@ class SiteController extends Controller
     }
 
 
-    public function actionError()
-    {
-        $exception = Yii::$app->errorHandler->exception;
-        if ($exception !== null) {
-            return $this->render('error', ['exception' => $exception]);
-        }
-    }
+//    public function actionError()
+//    {
+//        $exception = Yii::$app->errorHandler->exception;
+//        if ($exception !== null) {
+//            return $this->render('error', ['exception' => $exception]);
+//        }
+//    }
 
 
-	public function actionCategory($id)
-	{
-		$query = PostSearch::find()->where(["category_id" => $id]);
-		$countQuery = clone $query;
-		$pages = new Pagination([/*'defaultPageSize' => 6, */ 'totalCount' => $countQuery->count()]);
-		$models = $query->offset($pages->offset)
-			->limit($pages->limit)
-			->all();
+//	public function actionCategory($id)
+//	{
+//		$query = PostSearch::find()->where(["category_id" => $id]);
+//		$countQuery = clone $query;
+//		$pages = new Pagination([/*'defaultPageSize' => 6, */ 'totalCount' => $countQuery->count()]);
+//		$models = $query->offset($pages->offset)
+//			->limit($pages->limit)
+//			->all();
+//
+//		return $this->render('science', [
+//			'models' => $models,
+//			'pages' => $pages,
+//		]);
+//	}
 
-		return $this->render('science', [
-			'models' => $models,
-			'pages' => $pages,
-		]);
-	}
-
-	public function actionGallery(){
-		return $this->render('gallery');
-	}
+//	public function actionGallery(){
+//		return $this->render('gallery');
+//	}
 
 	public function actionHome(){
 		return $this->render('home');
 	}
-
-	public function actionNews(){
-		return $this->render('news');
-	}
-
-
-	public function actionReports(){
-		return $this->render('reports');
-	}
-
-	public function actionAddimages(){
-
-		$model = new Images();
-
-
-		if ($model->load(Yii::$app->request->post()))
-		{
-			$imageName = $model->img_name;
-			$model->file = UploadedFile::getInstance($model, 'file');
-			$model->file->saveAs( 'uploads/'. $imageName.'.'.$model->file->extension );
-
-			$model->img_path = 'uploads/'. $imageName.'.'.$model->file->extension;
-
-
-//		  $model->file = UploadedFile::getInstance($model, 'file');
-//			$path = 'uploads/';
 //
-//			if(!is_dir($path))
-//				$path = mkdir('uploads/');
+//	public function actionNews(){
+//		return $this->render('news');
+//	}
 //
-//			$model->file->saveAs($path.$model->img_name.'.'.$model->file->extension);
-//			$model->img_path = $path.$model->img_name.'.'.$model->file->extension;
+//
+//	public function actionReports(){
+//		return $this->render('reports');
+//	}
 
-
-
-			$model->created_at = date('Y-m-d h:m:s');
-
-			if($model->save())
-				return $this->redirect(['gallery']);
-		} else {
-			return $this->render('add_images', [
-				'model' => $model,
-			]);
-		}
-	}
+//	public function actionAddimages(){
+//
+//		$model = new Images();
+//
+//
+//		if ($model->load(Yii::$app->request->post()))
+//		{
+//			$imageName = $model->img_name;
+//			$model->file = UploadedFile::getInstance($model, 'file');
+//			$model->file->saveAs( 'uploads/'. $imageName.'.'.$model->file->extension );
+//
+//			$model->img_path = 'uploads/'. $imageName.'.'.$model->file->extension;
+//
+//
+////		  $model->file = UploadedFile::getInstance($model, 'file');
+////			$path = 'uploads/';
+////
+////			if(!is_dir($path))
+////				$path = mkdir('uploads/');
+////
+////			$model->file->saveAs($path.$model->img_name.'.'.$model->file->extension);
+////			$model->img_path = $path.$model->img_name.'.'.$model->file->extension;
+//
+//
+//
+//			$model->created_at = date('Y-m-d h:m:s');
+//
+//			if($model->save())
+//				return $this->redirect(['gallery']);
+//		} else {
+//			return $this->render('add_images', [
+//				'model' => $model,
+//			]);
+//		}
+//	}
 
 
 
@@ -184,55 +193,55 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-	        ActionLog::add('success', $this->id);
-
-            return $this->refresh();
-        }
-
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
+//    public function actionContact()
+//    {
+//        $model = new ContactForm();
+//        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+//            Yii::$app->session->setFlash('contactFormSubmitted');
+//	        ActionLog::add('success', $this->id);
+//
+//            return $this->refresh();
+//        }
+//
+//        return $this->render('contact', [
+//            'model' => $model,
+//        ]);
+//    }
 
     /**
      * Displays about page.
      *
      * @return string
      */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-	public function actionLanguage()
-	{
-		if(isset($_POST['lang'])){
-			Yii::$app->language = $_POST['lang'];
-			$cookie = new yii\web\Cookie([
-				'name' => 'lang',
-				'value' => $_POST['lang']
-			]);
-
-			Yii::$app->getResponse()->getCookies()->add($cookie);
-		}
-	}
-
-    public function actionAddimage()
-    {
-        $model = new Image();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->image_id]);
-        } else {
-            return $this->render('add_images', [
-                'model' => $model,
-            ]);
-        }
-    }
+//    public function actionAbout()
+//    {
+//        return $this->render('about');
+//    }
+//	public function actionLanguage()
+//	{
+//		if(isset($_POST['lang'])){
+//			Yii::$app->language = $_POST['lang'];
+//			$cookie = new yii\web\Cookie([
+//				'name' => 'lang',
+//				'value' => $_POST['lang']
+//			]);
+//
+//			Yii::$app->getResponse()->getCookies()->add($cookie);
+//		}
+//	}
+//
+//    public function actionAddimage()
+//    {
+//        $model = new Image();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->image_id]);
+//        } else {
+//            return $this->render('add_images', [
+//                'model' => $model,
+//            ]);
+//        }
+//    }
 
 
 

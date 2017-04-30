@@ -42,19 +42,19 @@
 			 <div class="col-md-12">
 				 <div class="text-center">
 					 <div class="error-404-page text-center">
-						 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+						 <?php if (Yii::$app->session->hasFlash('subscribed')): ?>
 							 <div class="alert alert-success">
-								 Thank you for contacting us. We will respond to you as soon as possible.
+								 <?= \Yii::$app->session->getFlash('subscribed'); ?>
 							 </div>
 						 <?php else: ?>
 							 <h3><?= Yii::t('app','Coming soon!'); ?></h3>
-							 <p>The page you are looking for might have been removed,
-								 <br>had its name changed or is temporarily unavailable.</p>
+							 <?= Html::img('AppImages/logo.png', ['style'=>'width:200px;']) ?>
 							 <h3>Enter your email to subscribe:</h3>
 							 <div class="input-append">
 								 <?php $form = ActiveForm::begin(['id' => 'subscribe-form',
 								 'options' => [ 'class' => 'form-search search-404']]); ?>
-								 <?= $form->field($model, 'email')->textInput(['class' => 'span2 search-query','style'=>'color: black;','maxlength' => true]); ?>
+								 <div id="result"></div>
+								 <?= $form->field($model, 'email')->textInput(['id'=>'email','class' => 'span2 search-query','style'=>'color: black;','maxlength' => true]); ?>
 								 <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']); ?>
 								 <?php ActiveForm::end(); ?>
 							 </div>
