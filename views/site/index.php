@@ -9,7 +9,11 @@
  // Coming Soon Page
 
  ?>
+
  <div id="social" xmlns="http://www.w3.org/1999/html">
+	 <div class="pull-left">
+		 <div style="margin: 7px; color: aliceblue;">&#169 <?=date('Y');?> SmartEngine | Developed by: <a href="#">Ivic Milivoje</a></div>
+	 </div>
 	 <ul class="social-icons pull-right hidden-xs">
 		 <li style="margin: 7px; color: aliceblue;">Follow us on:</li>
 		 <li class="social-rss">

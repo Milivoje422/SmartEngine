@@ -3,3 +3,14 @@
         margin: auto;
         float: none;
     }
+
+    #social
+    {
+        width: 95%;
+    }
+    @media (max-width: 460px){
+        .error-404-page .search-404{
+            width:100%;
+        }
+    }
+
