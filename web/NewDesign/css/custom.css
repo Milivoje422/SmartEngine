@@ -13,4 +13,46 @@
             width:100%;
         }
     }
-
+    #social-info
+    {
+        position:absolute;
+        width:100%;
+        top:0px;
+        z-index: 39;
+    }
+    #info-1
+    {
+        margin: 7px;
+        color: aliceblue;
+    }
+    #info-1 a
+    {
+        color: #b1bbc3;
+    }
+    #social-info-2
+    {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+    }
+    #social-info-2 ul
+    {
+        padding: 0px;
+    }
+    @media(max-width:450px)
+    {
+        #subscribe-form
+        {
+            padding: 14px;
+            width: 100%;
+        }
+        .error-404-page h3
+        {
+            font-size: 25px !important;
+        }
+    }
+    /*ul.social-icons li*/
+    /*{*/
+        /*margin: 5px 0px !important;*/
+    /*}*/

@@ -94,14 +94,20 @@ class SiteController extends Controller
 		    $membermail->name = "Smart Engine bot!";
 
 		    if ($model->save()) {
-			    if($adminmail->contact(Yii::$app->params['adminEmail']) || $membermail->contact($email)) {
+
+			    $adminmail->contact(Yii::$app->params['adminEmail']) ;
+			    $membermail->contact($email);
 
 				    Yii::$app->session->setFlash('subscribed','Thank you for subscribe!');
-				    ActionLog::add('success', 1);
-				    return $this->refresh();
+				    ActionLog::add('success', 'Subscribed');
 
-			    }
+			    return $this->render('index', [
+				    'model' => $model,
+			    ]);
+		    }else{
+			    ActionLog::add('Error', 'Subscribed');
 		    }
+
 	    }
 	    return $this->render('index', [
 		    'model' => $model,
@@ -109,13 +115,13 @@ class SiteController extends Controller
     }
 
 
-//    public function actionError()
-//    {
-//        $exception = Yii::$app->errorHandler->exception;
-//        if ($exception !== null) {
-//            return $this->render('error', ['exception' => $exception]);
-//        }
-//    }
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+            return $this->render('error', ['exception' => $exception]);
+        }
+    }
 
 
 //	public function actionCategory($id)
@@ -217,18 +223,18 @@ class SiteController extends Controller
 //    {
 //        return $this->render('about');
 //    }
-//	public function actionLanguage()
-//	{
-//		if(isset($_POST['lang'])){
-//			Yii::$app->language = $_POST['lang'];
-//			$cookie = new yii\web\Cookie([
-//				'name' => 'lang',
-//				'value' => $_POST['lang']
-//			]);
-//
-//			Yii::$app->getResponse()->getCookies()->add($cookie);
-//		}
-//	}
+	public function actionLanguage()
+	{
+		if(isset($_POST['lang'])){
+			Yii::$app->language = $_POST['lang'];
+			$cookie = new yii\web\Cookie([
+				'name' => 'lang',
+				'value' => $_POST['lang']
+			]);
+
+			Yii::$app->getResponse()->getCookies()->add($cookie);
+		}
+	}
 //
 //    public function actionAddimage()
 //    {

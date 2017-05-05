@@ -482,7 +482,7 @@ JqueryFiles::register($this);
 				</ul>
 			</div>
 			<!-- End Footer Menu -->
-			<!-- Copyright -->
+			<!-- Copyright -->alksdmflkas
 			<div id="copyright" class="col-md-6">
 				<p class="pull-right"> <?= date("Y") ?> Powered by <?= Yii::$app->params['app_name'];?> | Design by <?= Yii::$app->params['founder'];?></p>
 			</div>
