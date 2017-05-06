@@ -73,10 +73,14 @@ class ComposerStaticInit9f9e4e27e79990b4ee47bd62041b34f3
             'kartik\\select2\\' => 15,
             'kartik\\rating\\' => 14,
             'kartik\\range\\' => 13,
+            'kartik\\popover\\' => 15,
             'kartik\\plugins\\tabs\\' => 20,
+            'kartik\\plugins\\popover\\' => 23,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\plugins\\depdrop\\' => 23,
             'kartik\\mpdf\\' => 12,
+            'kartik\\ipinfo\\' => 14,
+            'kartik\\icons\\' => 13,
             'kartik\\growl\\' => 13,
             'kartik\\form\\' => 12,
             'kartik\\file\\' => 12,
@@ -306,9 +310,17 @@ class ComposerStaticInit9f9e4e27e79990b4ee47bd62041b34f3
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-rangeinput',
         ),
+        'kartik\\popover\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-popover-x',
+        ),
         'kartik\\plugins\\tabs\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/bootstrap-tabs-x',
+        ),
+        'kartik\\plugins\\popover\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-popover-x',
         ),
         'kartik\\plugins\\fileinput\\' => 
         array (
@@ -321,6 +333,14 @@ class ComposerStaticInit9f9e4e27e79990b4ee47bd62041b34f3
         'kartik\\mpdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf',
+        ),
+        'kartik\\ipinfo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-ipinfo',
+        ),
+        'kartik\\icons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-icons',
         ),
         'kartik\\growl\\' => 
         array (

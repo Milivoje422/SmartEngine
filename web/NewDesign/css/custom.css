@@ -52,7 +52,7 @@
             font-size: 25px !important;
         }
     }
-    /*ul.social-icons li*/
-    /*{*/
-        /*margin: 5px 0px !important;*/
-    /*}*/
+    ul.social-icons li
+    {
+        /*margin: 0px 1px 0 0 !important;*/
+    }

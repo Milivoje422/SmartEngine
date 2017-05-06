@@ -65,6 +65,22 @@
 								 <?php ActiveForm::end(); ?>
 							 </div>
 						 <?php endif; ?>
+						 <?= \Yii::$app->getRequest()->getUserIP(); ?>
+						<?php
+
+						 use kartik\ipinfo\IpInfo;
+						 use kartik\popover\PopoverX;
+						echo IpInfo::widget();
+//						echo IpInfo::widget([
+//							'ip' => '31.223.131.177',
+////							'template' => '{flag} {country_code} ({city} {region_name} {country_name} {zip_code})',
+//							'popoverOptions' => [
+//								'placement' => PopoverX::ALIGN_BOTTOM_LEFT,
+//								'size' => PopoverX::SIZE_MEDIUM
+//							]
+//						]);
+
+						 ?>
 					 </div>
 				 </div>
 			 </div>
