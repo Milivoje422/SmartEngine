@@ -92,7 +92,7 @@ return array(
         'Title' => 'Titre',
         'Field Type' => 'Type de champ',
         'Field Size' => 'Taille du champ',
-        'Field Size min' => 'Field Size min', // TODO: translate
+        'Field Size min' => 'Taille du champ min', // TODO: translate
         'Required' => 'Requis',
         'Match' => 'Match',
         'Range' => 'Gamme',
