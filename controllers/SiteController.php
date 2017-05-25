@@ -48,6 +48,9 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+  /**
+     * @inheritdoc
+     */
     public function actions()
     {
         return [
@@ -59,6 +62,14 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+            return $this->render('error', ['exception' => $exception]);
+        }
     }
 
     /**
@@ -114,14 +125,6 @@ class SiteController extends Controller
 	    ]);
     }
 
-
-    public function actionError()
-    {
-        $exception = Yii::$app->errorHandler->exception;
-        if ($exception !== null) {
-            return $this->render('error', ['exception' => $exception]);
-        }
-    }
 
 
 //	public function actionCategory($id)
